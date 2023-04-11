@@ -2,7 +2,7 @@ import { getAccessToken } from "./login.cy";
 import { getUserRecommendedNeeds } from "./recommended-needs.cy";
 
 describe("GET all recommended needs endpoint", () => {
-  it('Verify that "all recommended needs" endpoint is working properly', () => {
+  it('Verify that "all recommended needs" endpoint is working properly @TC16', () => {
     getAccessToken().then((token) => {
       getUserRecommendedNeeds(token).then((response) => {
         expect(response.status).to.equal(200);
