@@ -2,6 +2,7 @@ export class dashboardPage {
   constructor() {
     this.logoutButton = ":nth-child(9) > .nav-link";
     this.recommendedNeedsPage = ":nth-child(3) > .nav-link > p";
+    this.needsPage = ".nav > :nth-child(2) > .nav-link";
   }
   verifyHomePageIsDisplayed() {
     cy.url().should("contains", "/dashboard");
@@ -11,11 +12,11 @@ export class dashboardPage {
     cy.wait(2000);
   }
   navigateToRecommendedNeedsPage() {
-    cy.get(":nth-child(3) > .nav-link > p").click();
+    cy.get(this.recommendedNeedsPage).click();
     cy.wait(3000);
   }
   navigateToNeedsPage() {
-    cy.get(".nav > :nth-child(2) > .nav-link").click();
+    cy.get(this.needsPage).click();
   }
   verifyUserIsOnNeedsPage() {
     cy.url().should("contains", "/needs");

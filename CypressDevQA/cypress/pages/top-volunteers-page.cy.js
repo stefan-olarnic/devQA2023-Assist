@@ -2,6 +2,10 @@ export class topVolunteersPage {
   constructor() {
     this.topVoluntariPage = 'a[href*="/search"';
     this.dismissButton = "button.dismissButton";
+    this.zoomInButton = '[aria-label="Zoom in"]';
+    this.zoomOutButton = '[aria-label="Zoom out"]';
+    this.searchVolunteerInputField = 'input[name="filter"]';
+    this.volunteerCardName = 'div.details.mt-2 h4';
   }
   navigateToTopVolunteersPage() {
     cy.get(this.topVoluntariPage).click();
@@ -23,14 +27,14 @@ export class topVolunteersPage {
     cy.get(".card-volunteer").should("have.length.at.least", 1);
   }
   verifyZoomInOutFunctionality() {
-    cy.get('[aria-label="Zoom in"]').click();
+    cy.get(this.zoomInButton).click();
     cy.wait(1000);
-    cy.get('[aria-label="Zoom out"]').click().click();
+    cy.get(this.zoomOutButton).click().click();
   }
   searchVolunteerAfterName() {
-    cy.get('input[name="filter"]').type('aaa')
+    cy.get(this.searchVolunteerInputField).type('aaa')
   }
   verifyVolunteerIsDisplayed() {
-    cy.contains('div.details.mt-2 h4', 'aaa')
+    cy.contains(this.volunteerCardName, 'aaa')
   }
 }

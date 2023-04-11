@@ -1,22 +1,33 @@
-import { ADRESS, CONTACT_FIRST_NAME, CONTACT_PHONE_NUMBER, DESCRIPTION } from "../support/constants";
+import {
+  ADRESS,
+  CONTACT_FIRST_NAME,
+  CONTACT_PHONE_NUMBER,
+  DESCRIPTION,
+} from "../support/constants";
 
 export class recommendedNeedsPage {
   constructor() {
     this.table = 'table[role="table"]';
     this.currentRows = 'tbody[role="rowgroup"] > tr[role="row"]';
     this.viewButton = ':nth-child(1) > [aria-colindex="6"] > div > .fa-eye';
-    this.trashButton = 'td[aria-colindex="6"] div > i[title="Sterge"]:not([disabled="disabled"])';
+    this.trashButton =
+      'td[aria-colindex="6"] div > i[title="Sterge"]:not([disabled="disabled"])';
     this.modal = "div.modal-content";
     this.deleteButton = 'button[type="button"].btn-primary';
     this.rowCountBefore = 0;
-    
+    this.searchInputField = 'input[name="Filter"].form-control';
+    this.recommendedNeedsPage = ":nth-child(3) > .nav-link > p";
+    this.mandatoryFieldRequiredError = ".errors > .text-left";
+    this.viewNeedTab = "div.col-md-8";
+    this.cardStatus = ".card-header > p";
+    this.dashboardPage = ":nth-child(1) > .nav-link > p";
   }
   verifySuccesMessageIsDisplayed() {
     cy.contains("Succes!").should("be.visible");
     cy.wait(200);
   }
   navigateToRecommendedNeedsPage() {
-    cy.get(":nth-child(3) > .nav-link > p").click();
+    cy.get(this.recommendedNeedsPage).click();
     cy.wait(3000);
   }
   verifyNewRowHasBeenAdded() {
@@ -37,7 +48,7 @@ export class recommendedNeedsPage {
     cy.wait(1000);
   }
   mandatoryFieldErrorIsDisplayed() {
-    cy.get(".errors > .text-left").should("be.visible");
+    cy.get(this.mandatoryFieldRequiredError).should("be.visible");
   }
   verifyUpdatedNumberOfRows() {
     let rowCountBefore, rowCountAfter;
@@ -56,9 +67,9 @@ export class recommendedNeedsPage {
     cy.url().should("contains", "/view");
   }
   verifyFormIsProperlyDisplayed() {
-    cy.get("div.col-md-8").should("be.visible");
+    cy.get(this.viewNeedTab).should("be.visible");
     cy.contains("Vizualizare nevoie recomandata").should("exist");
-    cy.get(".card-header > p").eq(0).should("be.visible");
+    cy.get(this.cardStatus).eq(0).should("be.visible");
   }
   clickOnTrashButton() {
     cy.get(this.trashButton).first().click();
@@ -68,9 +79,7 @@ export class recommendedNeedsPage {
     cy.get(this.deleteButton).click();
   }
   filterAndSearchByDescription() {
-    cy.get('input[name="Filter"].form-control')
-      .as("inputSearch")
-      .type(DESCRIPTION);
+    cy.get(this.searchInputField).as("inputSearch").type(DESCRIPTION);
     cy.get("tr").find(`td:contains('${DESCRIPTION}')`).should("exist");
   }
   filterAndSearchByContact() {
@@ -89,6 +98,6 @@ export class recommendedNeedsPage {
     cy.get(".close").click({ force: true });
   }
   navigateToDashboardPage() {
-    cy.get(':nth-child(1) > .nav-link > p').click()
+    cy.get(this.dashboardPage).click();
   }
 }

@@ -151,10 +151,3 @@ describe("'Nevoie recomandate page'", () => {
     needs.verifyOnlyViewButtonIsEnabled();
   });
 });
-
-/*
-  clickOn apply button - initial version of last tc from here:
-  cy.get(
-      ':nth-child(1) > [aria-colindex="5"] > div > .fa-user-check'
-    ).click(); instead of needs.clickonapplybutton();
-*/

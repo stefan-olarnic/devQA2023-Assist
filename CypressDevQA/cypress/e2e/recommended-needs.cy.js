@@ -43,7 +43,7 @@ describe("Verify that 'Nevoi recomandate' page is working accordingly", () => {
     homePage.navigateToRecommendedNeedsPage();
 
     const individualNeedsPage = new recommendedNeedsPage();
-    cy.wait(3000);
+    cy.wait(5000);
     //added an additional wait of 3000ms because sometimes due to many needs created it might take longer to load
     individualNeedsPage.verifyInitialNumberOfRows();
     individualNeedsPage.addNewNeedButton();

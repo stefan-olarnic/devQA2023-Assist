@@ -3,6 +3,7 @@ export class mainPage {
     this.acasaPage = 'a[href*="/"]';
     this.topVoluntariPage = 'a[href*="/search"';
     this.dismissButton = "button.dismissButton";
+    this.authentificationPage = ":nth-child(7) > .nav-link";
   }
   verifyUserIsOnMainPage() {
     cy.url().should("eq", "https://iwanttohelp.bim.assistcloud.services/");
@@ -24,7 +25,7 @@ export class mainPage {
     });
   }
   navigateToAuthPage() {
-    cy.get(":nth-child(7) > .nav-link").click();
+    cy.get(this.authentificationPage).click();
   }
   verifyUserIsOnAuthPage() {
     cy.url().should("contains", "/auth/login");
