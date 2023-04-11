@@ -4,12 +4,18 @@ import { dashboardPage } from "../../pages/dashboard-page.cy";
 import { mainPage } from "../../pages/main-page.cy";
 import { needsPage } from "../../pages/needs-page.cy";
 import { recommendedNeedsPage } from "../../pages/recommended-needs-page.cy";
-import { goodCredentials, secondAccountCredentials } from "../../support/constants";
+import {
+  goodCredentials,
+  secondAccountCredentials,
+} from "../../support/constants";
 import { topVolunteersPage } from "../../pages/top-volunteers-page.cy";
 
 describe("Verify Top volunteers are properly displayed", () => {
   beforeEach(() => {
     cy.visit("https://iwanttohelp.bim.assistcloud.services/auth/login");
+  });
+
+  it("Verify 'Completeaza' functionality @TC18", () => {
     const loginPage = new authPage();
     loginPage.enterCredentialsAndLogin(
       goodCredentials.phoneNumber,
@@ -18,10 +24,6 @@ describe("Verify Top volunteers are properly displayed", () => {
 
     const homePage = new dashboardPage();
     homePage.verifyHomePageIsDisplayed();
-  });
-
-  it("Verify 'Completeaza' functionality @TC18", () => {
-    const homePage = new dashboardPage();
     homePage.navigateToRecommendedNeedsPage();
 
     const individualNeedsPage = new recommendedNeedsPage();
@@ -37,18 +39,17 @@ describe("Verify Top volunteers are properly displayed", () => {
     initialPage.navigateToAuthPage();
     initialPage.verifyUserIsOnAuthPage();
 
-    const loginPage = new authPage();
     loginPage.enterCredentialsAndLogin(
       secondAccountCredentials.phoneNumber,
       secondAccountCredentials.password
     );
 
+    homePage.verifyHomePageIsDisplayed();
     homePage.navigateToNeedsPage();
     homePage.verifyUserIsOnNeedsPage();
 
     const needs = new needsPage();
     needs.filterNeedsByDescription();
-    needs.sortNeedsByStatus();
     needs.clickOnApplyButton();
     needs.verifyModalPopUpIsDisplayed();
     needs.clickOnSubmitButton();
