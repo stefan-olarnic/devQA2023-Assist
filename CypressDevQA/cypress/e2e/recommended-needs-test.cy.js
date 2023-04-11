@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { goodCredentials } from "../support/constants"
+import { goodCredentials } from "../support/constants";
 import { authPage } from "../pages/auth-page.cy";
 import { dashboardPage } from "../pages/dashboard-page.cy";
 import "../support/commands";
@@ -15,8 +15,11 @@ describe("Verify that 'Nevoi recomandate' page is working accordingly", () => {
 
   it("Verify that a user is able to add new Nevoie recomandata @TC6", () => {
     const loginPage = new authPage();
-    loginPage.enterCredentialsAndLogin(goodCredentials.phoneNumber, goodCredentials.password);
-    
+    loginPage.enterCredentialsAndLogin(
+      goodCredentials.phoneNumber,
+      goodCredentials.password
+    );
+
     const homePage = new dashboardPage();
     homePage.verifyHomePageIsDisplayed();
     homePage.navigateToRecommendedNeedsPage();
@@ -25,7 +28,7 @@ describe("Verify that 'Nevoi recomandate' page is working accordingly", () => {
     individualNeedsPage.addNewNeedButton();
 
     cy.completeForm();
-    
+
     individualNeedsPage.verifySuccesMessageIsDisplayed();
     individualNeedsPage.navigateToRecommendedNeedsPage();
     individualNeedsPage.verifyNewRowHasBeenAdded();
@@ -36,7 +39,10 @@ describe("Verify that 'Nevoi recomandate' page is working accordingly", () => {
 
   it("Verify that the 'Descriere field' is required @TC7", () => {
     const loginPage = new authPage();
-    loginPage.enterCredentialsAndLogin(goodCredentials.phoneNumber, goodCredentials.password);
+    loginPage.enterCredentialsAndLogin(
+      goodCredentials.phoneNumber,
+      goodCredentials.password
+    );
 
     const homePage = new dashboardPage();
     homePage.verifyHomePageIsDisplayed();
@@ -49,10 +55,10 @@ describe("Verify that 'Nevoi recomandate' page is working accordingly", () => {
     individualNeedsPage.addNewNeedButton();
 
     cy.completeFormWithoutDescription();
-    
+
     individualNeedsPage.mandatoryFieldErrorIsDisplayed();
     individualNeedsPage.navigateToRecommendedNeedsPage();
-    
+
     individualNeedsPage.verifyUpdatedNumberOfRows();
 
     // an error message is displayed but how do i verify that no new row is added to nevoie recomandate table
@@ -62,17 +68,20 @@ describe("Verify that 'Nevoi recomandate' page is working accordingly", () => {
 
   it("Verify that user is able to use 'Vizualizeaza' functionality @TC8", () => {
     const loginPage = new authPage();
-    loginPage.enterCredentialsAndLogin(goodCredentials.phoneNumber, goodCredentials.password);
+    loginPage.enterCredentialsAndLogin(
+      goodCredentials.phoneNumber,
+      goodCredentials.password
+    );
 
     const homePage = new dashboardPage();
     homePage.verifyHomePageIsDisplayed();
     homePage.navigateToRecommendedNeedsPage();
-    
+
     const individualNeedsPage = new recommendedNeedsPage();
     individualNeedsPage.addNewNeedButton();
 
     cy.completeForm();
-    
+
     individualNeedsPage.verifySuccesMessageIsDisplayed();
     individualNeedsPage.navigateToRecommendedNeedsPage();
     individualNeedsPage.clickOnViewButton();
@@ -85,12 +94,15 @@ describe("Verify that 'Nevoi recomandate' page is working accordingly", () => {
 
   it("Verify that user is able to use 'Sterge' functionality @TC9", () => {
     const loginPage = new authPage();
-    loginPage.enterCredentialsAndLogin(goodCredentials.phoneNumber, goodCredentials.password);
+    loginPage.enterCredentialsAndLogin(
+      goodCredentials.phoneNumber,
+      goodCredentials.password
+    );
 
     const homePage = new dashboardPage();
     homePage.verifyHomePageIsDisplayed();
     homePage.navigateToRecommendedNeedsPage();
-    
+
     const individualNeedsPage = new recommendedNeedsPage();
     individualNeedsPage.addNewNeedButton();
 
@@ -107,12 +119,15 @@ describe("Verify that 'Nevoi recomandate' page is working accordingly", () => {
 
   it("Verify the search functionality @TC10", () => {
     const loginPage = new authPage();
-    loginPage.enterCredentialsAndLogin(goodCredentials.phoneNumber, goodCredentials.password);
+    loginPage.enterCredentialsAndLogin(
+      goodCredentials.phoneNumber,
+      goodCredentials.password
+    );
 
     const homePage = new dashboardPage();
     homePage.verifyHomePageIsDisplayed();
     homePage.navigateToRecommendedNeedsPage();
-    
+
     const individualNeedsPage = new recommendedNeedsPage();
     individualNeedsPage.addNewNeedButton();
 
@@ -121,7 +136,7 @@ describe("Verify that 'Nevoi recomandate' page is working accordingly", () => {
     individualNeedsPage.verifySuccesMessageIsDisplayed();
     individualNeedsPage.navigateToRecommendedNeedsPage();
     individualNeedsPage.addNewNeedButton();
-    
+
     cy.completeForm();
 
     individualNeedsPage.verifySuccesMessageIsDisplayed();
