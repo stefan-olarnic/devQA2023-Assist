@@ -47,3 +47,18 @@ export const ACCOUNT_CITY2 = "aaa";
 export const ACCOUNT_POSTALCODE2 = "aaa";
 export const ACCOUNT_PASSWORD2 = "aaa";
 export const ACCOUNT_CONFIRM_PASSWORD2 = ACCOUNT_PASSWORD2;
+
+export const body = {
+  contact_first_name: "kjkj",
+  contact_last_name: "kjkj",
+  contact_phone_number: "kjkj",
+  category: "food",
+  description: "kjkj",
+  address: {
+    street_name: "kjkj",
+    details: "kjkj",
+    county: "kjkj",
+    city: "kjkj",
+    postal_code: "02304",
+  },
+};

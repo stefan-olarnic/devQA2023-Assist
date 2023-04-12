@@ -11,16 +11,21 @@ describe("Create, get, and delete a need", () => {
   });
 
   it("Verify user can create/get/delete need @TC17", () => {
-    createNeed(token).then((response) => {
-      expect(response.status).to.equal(201);
-      createdNeedId = response.body.need.id;
-      cy.log(createdNeedId);
-      getNeed(token, createdNeedId).then((response) => {
+    let createdNeed;
+    createNeed(token)
+      .then((response) => {
+        expect(response.status).to.equal(201);
+        createdNeed = response.body.need;
+        return getNeed(token, createdNeed.id);
+      })
+      .then((response) => {
         expect(response.status).to.equal(200);
-        deleteNeed(token, createdNeedId).then((response) => {
-          expect(response.status).to.equal(204);
-        });
+        expect(response.body.need).to.deep.equal(createdNeed);
+        return deleteNeed(token, createdNeed.id);
+      })
+      .then((response) => {
+        expect(response.status).to.equal(204);
       });
-    });
   });
+  
 });
