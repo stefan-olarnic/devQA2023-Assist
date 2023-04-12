@@ -1,7 +1,4 @@
-import {
-  createFirstAccount,
-  createSecondAccount,
-} from "../../support/commands";
+import "../../support/commands";
 
 const { registerPage } = require("../../pages/register-page.cy");
 

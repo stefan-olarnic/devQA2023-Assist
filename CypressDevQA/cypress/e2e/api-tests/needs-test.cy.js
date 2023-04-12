@@ -2,7 +2,7 @@ import { getAccessToken } from "./login.cy";
 import { createNeed, getNeed, deleteNeed } from "./all-needs.cy";
 
 describe("Create, get, and delete a need", () => {
-  let createdNeedId;
+  let createdNeed;
   let token;
   before(() => {
     getAccessToken().then((accessToken) => {
@@ -11,11 +11,11 @@ describe("Create, get, and delete a need", () => {
   });
 
   it("Verify user can create/get/delete need @TC17", () => {
-    let createdNeed;
     createNeed(token)
       .then((response) => {
         expect(response.status).to.equal(201);
         createdNeed = response.body.need;
+        cy.log(createdNeed.id);
         return getNeed(token, createdNeed.id);
       })
       .then((response) => {
@@ -27,5 +27,4 @@ describe("Create, get, and delete a need", () => {
         expect(response.status).to.equal(204);
       });
   });
-  
 });
