@@ -13,7 +13,7 @@ import {
 
 describe("'Nevoie recomandate page'", () => {
   beforeEach(() => {
-    cy.visit("https://iwanttohelp.bim.assistcloud.services/auth/login");
+    cy.visit(Cypress.config("baseUrl") + "auth/login");
     const loginPage = new authPage();
     loginPage.enterCredentialsAndLogin(
       goodCredentials.phoneNumber,

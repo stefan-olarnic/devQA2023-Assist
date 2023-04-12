@@ -12,7 +12,7 @@ import { topVolunteersPage } from "../../pages/top-volunteers-page.cy";
 
 describe("Verify Top volunteers are properly displayed", () => {
   beforeEach(() => {
-    cy.visit("https://iwanttohelp.bim.assistcloud.services/auth/login");
+    cy.visit(Cypress.config("baseUrl") + "auth/login");
   });
 
   it("Verify 'Completeaza' functionality @TC18", () => {

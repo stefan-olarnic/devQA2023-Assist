@@ -3,7 +3,7 @@ import { topVolunteersPage } from "../pages/top-volunteers-page.cy";
 
 describe("Top Voluntari page functionality", () => {
   beforeEach(() => {
-    cy.visit("https://iwanttohelp.bim.assistcloud.services/");
+    cy.visit(Cypress.config("baseUrl"));
   });
 
   // TC2

@@ -8,7 +8,7 @@ import { recommendedNeedsPage } from "../pages/recommended-needs-page.cy";
 
 describe("Verify that 'Nevoi recomandate' page is working accordingly", () => {
   beforeEach(() => {
-    cy.visit("https://iwanttohelp.bim.assistcloud.services/auth/login");
+    cy.visit(Cypress.config("baseUrl") + "auth/login");
   });
 
   // TC6

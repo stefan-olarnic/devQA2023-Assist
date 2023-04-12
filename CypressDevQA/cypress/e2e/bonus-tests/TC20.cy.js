@@ -6,7 +6,7 @@ import "../../support/commands";
 
 describe('Verify that the number of "Nevoie in asteptare" on dashboard is properly displayed', () => {
   it('Verify that "Nevoie in asteptare" is properly updated on dashboard page @TC20', () => {
-    cy.visit("https://iwanttohelp.bim.assistcloud.services/auth/login");
+    cy.visit(Cypress.config("baseUrl") + "auth/login");
     const loginPage = new authPage();
     loginPage.enterCredentialsAndLogin(
       goodCredentials.phoneNumber,

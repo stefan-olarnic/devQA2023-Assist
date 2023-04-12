@@ -5,7 +5,7 @@ import { mainPage } from "../pages/main-page.cy";
 
 describe("Verify login functionality", () => {
   beforeEach(() => {
-    cy.visit("https://iwanttohelp.bim.assistcloud.services/auth/login");
+    cy.visit(Cypress.config("baseUrl") + "auth/login");
   });
 
   // TC4

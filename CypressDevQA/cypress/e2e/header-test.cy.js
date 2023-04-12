@@ -13,7 +13,7 @@ import { topVolunteersPage } from "../pages/top-volunteers-page.cy";
 describe("Header functionality", () => {
   it("Verify that all header's elements navigate to the correct page @TC1", () => {
     const initialPage = new mainPage();
-    cy.visit("https://iwanttohelp.bim.assistcloud.services/");
+    cy.visit(Cypress.config("baseUrl"));
     initialPage.navigateToAcasaPage();
     initialPage.verifyUserIsOnMainPage();
 

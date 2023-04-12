@@ -2,7 +2,7 @@ import { contactUsPage } from "../../pages/contact-us-page.cy";
 
 describe("Verify offer suggestion functionality", () => {
   it.only("Verify that user can successfully offer suggestions @TC19", () => {
-    cy.visit("https://iwanttohelp.bim.assistcloud.services/");
+    cy.visit(Cypress.config("baseUrl"));
     const contactPage = new contactUsPage();
     contactPage.navigateToContactPage();
     contactPage.verifyUserIsOnContactPage();
